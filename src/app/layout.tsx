@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { site } from "@/lib/site";
 
@@ -17,6 +18,9 @@ const jetbrains = JetBrains_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
+  verification: {
+    google: "VvpRj1x1IMm2SYqbpHsBDWqHu2U8cO8c4VKV0fOLhvE",
+  },
   title: {
     default: "ListXtream — IPTV & Xtream Streaming Resource",
     template: "%s | ListXtream",
@@ -75,6 +79,18 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${inter.variable} ${jetbrains.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-page text-ink">
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-QZ26RB371B"
+          strategy="afterInteractive"
+        />
+        <Script id="gtag-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-QZ26RB371B');
+          `}
+        </Script>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
