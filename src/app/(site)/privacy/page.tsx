@@ -1,4 +1,24 @@
+import type { Metadata } from "next";
 import { PageShell } from "@/components/layout/page-shell";
+import { site } from "@/lib/site";
+
+export const metadata: Metadata = {
+  title: "Privacy Policy",
+  description:
+    "How ListXtream handles data — what we collect, what we do not do, and how to reach us with questions.",
+  alternates: { canonical: `${site.url}/privacy` },
+  openGraph: {
+    title: "Privacy Policy",
+    description: "How ListXtream handles data — what we collect, what we do not do, and how to reach us with questions.",
+    url: `${site.url}/privacy`,
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Privacy Policy — ListXtream",
+    description: "How ListXtream handles data — what we collect, what we do not do, and how to reach us with questions.",
+  },
+};
 
 export default function PrivacyPage() {
   return (

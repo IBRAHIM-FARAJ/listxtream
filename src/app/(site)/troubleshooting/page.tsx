@@ -1,8 +1,30 @@
+import type { Metadata } from "next";
 import { Container } from "@/components/layout/container";
 import { HubHeader, HubSection } from "@/components/layout/hub";
 import { ArticleCard } from "@/components/cards/article-card";
 import { Input } from "@/components/ui/input";
 import { getArticlesByCategory } from "@/lib/articles";
+import { site } from "@/lib/site";
+
+export const metadata: Metadata = {
+  title: "IPTV Troubleshooting Guides",
+  description:
+    "Fixed guides for the most common IPTV and Xtream problems — buffering, login errors, blank channel lists, EPG issues, and more.",
+  alternates: { canonical: `${site.url}/troubleshooting` },
+  openGraph: {
+    title: "IPTV Troubleshooting Guides",
+    description:
+      "Fixed guides for the most common IPTV and Xtream problems — buffering, login errors, blank channel lists, EPG issues, and more.",
+    url: `${site.url}/troubleshooting`,
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "IPTV Troubleshooting Guides",
+    description:
+      "Fixed guides for the most common IPTV and Xtream problems — buffering, login errors, blank channel lists, EPG issues, and more.",
+  },
+};
 
 const quick = [
   "Buffering",

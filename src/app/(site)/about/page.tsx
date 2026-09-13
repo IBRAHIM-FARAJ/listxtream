@@ -1,4 +1,26 @@
+import type { Metadata } from "next";
 import { PageShell } from "@/components/layout/page-shell";
+import { site } from "@/lib/site";
+
+export const metadata: Metadata = {
+  title: "About",
+  description:
+    "ListXtream is an independent editorial website focused on IPTV, Xtream streaming technology, device guides and troubleshooting — written plainly, without hype.",
+  alternates: { canonical: `${site.url}/about` },
+  openGraph: {
+    title: "About ListXtream",
+    description:
+      "ListXtream is an independent editorial website focused on IPTV, Xtream streaming technology, device guides and troubleshooting — written plainly, without hype.",
+    url: `${site.url}/about`,
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "About ListXtream",
+    description:
+      "ListXtream is an independent editorial website focused on IPTV, Xtream streaming technology, device guides and troubleshooting — written plainly, without hype.",
+  },
+};
 
 export default function AboutPage() {
   return (

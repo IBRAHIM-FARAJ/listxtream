@@ -1,8 +1,30 @@
+import type { Metadata } from "next";
 import { Container } from "@/components/layout/container";
 import { HubHeader, HubSection } from "@/components/layout/hub";
 import { ArticleCard } from "@/components/cards/article-card";
 import { TopicCard } from "@/components/cards/topic-card";
 import { getArticlesByCategory } from "@/lib/articles";
+import { site } from "@/lib/site";
+
+export const metadata: Metadata = {
+  title: "Xtream Codes & API Guides",
+  description:
+    "Understand Xtream technologies, terminology, APIs, players and troubleshooting — practical guides for modern IPTV streaming.",
+  alternates: { canonical: `${site.url}/xtream` },
+  openGraph: {
+    title: "Xtream Codes & API Guides",
+    description:
+      "Understand Xtream technologies, terminology, APIs, players and troubleshooting — practical guides for modern IPTV streaming.",
+    url: `${site.url}/xtream`,
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Xtream Codes & API Guides",
+    description:
+      "Understand Xtream technologies, terminology, APIs, players and troubleshooting — practical guides for modern IPTV streaming.",
+  },
+};
 
 const subtopics = [
   {

@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { Container } from "@/components/layout/container";
 import { getGlossary, getGlossaryTerm } from "@/lib/glossary";
 import { getArticlesByTerm } from "@/lib/articles";
+import { site } from "@/lib/site";
 
 export function generateStaticParams() {
   return getGlossary().map((t) => ({ slug: t.slug }));
@@ -15,8 +16,20 @@ export async function generateMetadata({
   const term = getGlossaryTerm(slug);
   if (!term) return {};
   return {
-    title: `${term.term} Definition`,
+    title: `${term.term} — IPTV Glossary`,
     description: term.definition,
+    alternates: { canonical: `${site.url}/glossary/${term.slug}` },
+    openGraph: {
+      title: `${term.term} — IPTV Glossary`,
+      description: term.definition,
+      url: `${site.url}/glossary/${term.slug}`,
+      type: "article",
+    },
+    twitter: {
+      card: "summary",
+      title: `${term.term} — IPTV Glossary`,
+      description: term.definition,
+    },
   };
 }
 
@@ -33,9 +46,55 @@ export default async function GlossaryTermPage({
 
   const relatedArticles = getArticlesByTerm(term.term);
 
+  const definedTermJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "DefinedTerm",
+    name: term.term,
+    description: term.definition,
+    url: `${site.url}/glossary/${term.slug}`,
+    inDefinedTermSet: {
+      "@type": "DefinedTermSet",
+      name: "IPTV & Xtream Glossary",
+      url: `${site.url}/glossary`,
+    },
+  };
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: site.url,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Glossary",
+        item: `${site.url}/glossary`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: term.term,
+        item: `${site.url}/glossary/${term.slug}`,
+      },
+    ],
+  };
+
   return (
     <Container className="pb-20">
       <div className="mx-auto max-w-[740px] pt-10">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(definedTermJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+        />
         <p className="text-xs font-semibold uppercase tracking-wider text-soft">
           Glossary
         </p>

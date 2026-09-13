@@ -1,8 +1,30 @@
+import type { Metadata } from "next";
 import { Container } from "@/components/layout/container";
 import { HubHeader, HubSection } from "@/components/layout/hub";
 import { ArticleCard } from "@/components/cards/article-card";
 import { DeviceCard } from "@/components/cards/device-card";
 import { getArticlesByCategory } from "@/lib/articles";
+import { site } from "@/lib/site";
+
+export const metadata: Metadata = {
+  title: "IPTV Device Guides",
+  description:
+    "Step-by-step guidance for running IPTV on your streaming device — Fire TV, Android TV, Smart TV, and Apple TV.",
+  alternates: { canonical: `${site.url}/devices` },
+  openGraph: {
+    title: "IPTV Device Guides",
+    description:
+      "Step-by-step guidance for running IPTV on your streaming device — Fire TV, Android TV, Smart TV, and Apple TV.",
+    url: `${site.url}/devices`,
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "IPTV Device Guides",
+    description:
+      "Step-by-step guidance for running IPTV on your streaming device — Fire TV, Android TV, Smart TV, and Apple TV.",
+  },
+};
 
 const devices = [
   { name: "Fire TV", href: "/devices/fire-tv", description: "Setup, known settings, and tips for Amazon Fire TV." },

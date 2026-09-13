@@ -1,4 +1,24 @@
+import type { Metadata } from "next";
 import { PageShell } from "@/components/layout/page-shell";
+import { site } from "@/lib/site";
+
+export const metadata: Metadata = {
+  title: "Terms of Use",
+  description:
+    "The terms that apply when using ListXtream — content use, no professional advice, and site availability.",
+  alternates: { canonical: `${site.url}/terms` },
+  openGraph: {
+    title: "Terms of Use",
+    description: "The terms that apply when using ListXtream — content use, no professional advice, and site availability.",
+    url: `${site.url}/terms`,
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Terms of Use — ListXtream",
+    description: "The terms that apply when using ListXtream — content use, no professional advice, and site availability.",
+  },
+};
 
 export default function TermsPage() {
   return (

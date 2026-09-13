@@ -1,4 +1,25 @@
+import type { Metadata } from "next";
 import { PageShell } from "@/components/layout/page-shell";
+import { site } from "@/lib/site";
+
+export const metadata: Metadata = {
+  title: "Contact",
+  description:
+    "Send corrections, suggestions, or editorial feedback to the ListXtream team.",
+  alternates: { canonical: `${site.url}/contact` },
+  openGraph: {
+    title: "Contact ListXtream",
+    description:
+      "Send corrections, suggestions, or editorial feedback to the ListXtream team.",
+    url: `${site.url}/contact`,
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Contact ListXtream",
+    description: "Send corrections, suggestions, or editorial feedback to the ListXtream team.",
+  },
+};
 
 export default function ContactPage() {
   return (

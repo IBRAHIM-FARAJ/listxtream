@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Container } from "@/components/layout/container";
 import { ButtonLink, Button } from "@/components/ui/button";
@@ -12,6 +13,27 @@ import {
   getPopularArticles,
   getLatestArticles,
 } from "@/lib/articles";
+import { site } from "@/lib/site";
+
+export const metadata: Metadata = {
+  title: { absolute: "ListXtream — IPTV & Xtream Streaming Resource" },
+  description:
+    "Practical guides, explainers, device tutorials and troubleshooting resources for modern IPTV and Xtream streaming.",
+  alternates: { canonical: site.url },
+  openGraph: {
+    title: "ListXtream — IPTV & Xtream Streaming Resource",
+    description:
+      "Practical guides, explainers, device tutorials and troubleshooting resources for modern IPTV and Xtream streaming.",
+    url: site.url,
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "ListXtream — IPTV & Xtream Streaming Resource",
+    description:
+      "Practical guides, explainers, device tutorials and troubleshooting resources for modern IPTV and Xtream streaming.",
+  },
+};
 
 const xtreamTopics = [
   {
@@ -19,26 +41,35 @@ const xtreamTopics = [
     description:
       "What the login format means, how services use it, and how to work with it.",
     href: "/xtream/xtream-codes",
+    image: "/images/articles/xtream-credentials.webp",
+    imageAlt:
+      "A server, an identity key and a playback device linked as an authorised connection",
   },
   {
     title: "Xtream API",
     description:
       "The structured interface players use to fetch channels, categories and EPG.",
     href: "/xtream/xtream-api",
+    image: "/images/articles/xtream-api-endpoints.webp",
+    imageAlt:
+      "Structured API request and response paths between a server and a client",
   },
   {
     title: "Xtream Troubleshooting",
     description:
       "Resolve login errors, blank lists and playback issues step by step.",
     href: "/xtream/xtream-troubleshooting",
+    image: "/images/articles/common-xtream-api-errors.webp",
+    imageAlt:
+      "An API request and response pipeline showing calm and warning states",
   },
 ];
 
 const devices = [
-  { name: "Fire TV", href: "/devices/fire-tv", description: "Get IPTV running on Amazon Fire TV." },
-  { name: "Android TV", href: "/devices/android-tv", description: "Setup and sideloading guidance for Android TV." },
-  { name: "Smart TV", href: "/devices/smart-tv", description: "Run IPTV on your TV&apos;s built-in apps." },
-  { name: "Apple TV", href: "/devices/apple-tv", description: "Players and setup for Apple TV." },
+  { name: "Fire TV", href: "/devices/fire-tv", description: "Get IPTV running on Amazon Fire TV.", image: "/images/devices/fire-tv.webp", imageAlt: "Amazon Fire TV streaming device" },
+  { name: "Android TV", href: "/devices/android-tv", description: "Setup and sideloading guidance for Android TV.", image: "/images/devices/android-tv.webp", imageAlt: "Android TV streaming device" },
+  { name: "Smart TV", href: "/devices/smart-tv", description: "Run IPTV on your TV's built-in apps.", image: "/images/devices/smart-tv.webp", imageAlt: "Smart TV running built-in streaming apps" },
+  { name: "Apple TV", href: "/devices/apple-tv", description: "Players and setup for Apple TV.", image: "/images/devices/apple-tv.webp", imageAlt: "Apple TV streaming device" },
 ];
 
 const problems = [

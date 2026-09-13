@@ -31,12 +31,24 @@ export type Article = {
   authorRole?: string;
   published: string;
   updated: string;
+  /** ISO-8601 publish date for structured data and sitemaps, e.g. "2026-08-01" */
+  publishedIso: string;
+  /** ISO-8601 update date for structured data and sitemaps, e.g. "2026-08-01" */
+  updatedIso: string;
   readingTime: string;
   featured?: boolean;
   popular?: boolean;
   badge?: string;
   topics?: string[];
   related?: string[];
+  /** Hero image path under /public, e.g. "/images/articles/what-is-iptv.webp" */
+  image?: string;
+  /** Descriptive alt text for the hero image (concept-based, not keyword-stuffed) */
+  imageAlt?: string;
+  /** Intrinsic pixel width of the hero image (used to render at native size without upscaling) */
+  imageWidth?: number;
+  /** Intrinsic pixel height of the hero image */
+  imageHeight?: number;
   blocks: ArticleBlock[];
 };
 

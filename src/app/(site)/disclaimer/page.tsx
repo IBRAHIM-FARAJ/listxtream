@@ -1,4 +1,26 @@
+import type { Metadata } from "next";
 import { PageShell } from "@/components/layout/page-shell";
+import { site } from "@/lib/site";
+
+export const metadata: Metadata = {
+  title: "Disclaimer",
+  description:
+    "ListXtream is an independent editorial site, not affiliated with any IPTV service provider, player developer, or streaming platform.",
+  alternates: { canonical: `${site.url}/disclaimer` },
+  openGraph: {
+    title: "Disclaimer",
+    description:
+      "ListXtream is an independent editorial site, not affiliated with any IPTV service provider, player developer, or streaming platform.",
+    url: `${site.url}/disclaimer`,
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Disclaimer — ListXtream",
+    description:
+      "ListXtream is an independent editorial site, not affiliated with any IPTV service provider, player developer, or streaming platform.",
+  },
+};
 
 export default function DisclaimerPage() {
   return (

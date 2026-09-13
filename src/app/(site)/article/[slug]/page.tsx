@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Container } from "@/components/layout/container";
 import { ArticleHeader } from "@/components/article/article-header";
@@ -30,9 +31,15 @@ export async function generateMetadata({
     openGraph: {
       title: article.title,
       description: article.excerpt,
+      url: `${site.url}/article/${article.slug}`,
       type: "article",
-      publishedTime: article.published,
-      modifiedTime: article.updated,
+      publishedTime: article.publishedIso,
+      modifiedTime: article.updatedIso,
+    },
+    twitter: {
+      card: "summary",
+      title: article.title,
+      description: article.excerpt,
     },
   };
 }
@@ -61,30 +68,76 @@ export default async function ArticlePage({
     .map((t) => getGlossaryTerm(t.toLowerCase()))
     .filter((g): g is NonNullable<typeof g> => Boolean(g));
 
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: article.title,
+    description: article.excerpt,
+    datePublished: article.publishedIso,
+    dateModified: article.updatedIso,
+    author: { "@type": "Organization", name: "ListXtream", url: site.url },
+    publisher: {
+      "@type": "Organization",
+      name: "ListXtream",
+      url: site.url,
+    },
+    mainEntityOfPage: `${site.url}/article/${article.slug}`,
+  };
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: site.url,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: article.category,
+        item: `${site.url}${article.categoryHref}`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: article.title,
+        item: `${site.url}/article/${article.slug}`,
+      },
+    ],
+  };
+
   return (
     <Container className="pb-20">
       <div className="pt-10">
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Article",
-              headline: article.title,
-              description: article.excerpt,
-              datePublished: article.published,
-              dateModified: article.updated,
-              author: { "@type": "Organization", name: "ListXtream" },
-              publisher: {
-                "@type": "Organization",
-                name: "ListXtream",
-                url: site.url,
-              },
-              mainEntityOfPage: `${site.url}/article/${article.slug}`,
-            }),
-          }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
         />
         <ArticleHeader article={article} />
+
+        {article.image && article.imageWidth && article.imageHeight && (
+          <figure
+            className="mx-auto mt-8 w-full"
+            style={{ maxWidth: `${article.imageWidth}px` }}
+          >
+            <Image
+              src={article.image}
+              alt={article.imageAlt ?? article.title}
+              width={article.imageWidth}
+              height={article.imageHeight}
+              priority
+              sizes={`(max-width: ${article.imageWidth}px) 100vw, ${article.imageWidth}px`}
+              className="h-auto w-full rounded-[18px] border border-border"
+            />
+          </figure>
+        )}
 
         <div className="mx-auto mt-10 grid max-w-[1120px] grid-cols-1 gap-10 md:grid-cols-[220px_1fr]">
           <aside className="hidden md:block">

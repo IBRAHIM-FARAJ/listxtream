@@ -1,7 +1,29 @@
+import type { Metadata } from "next";
 import { Container } from "@/components/layout/container";
 import { HubHeader } from "@/components/layout/hub";
 import { Input } from "@/components/ui/input";
 import { getGlossary } from "@/lib/glossary";
+import { site } from "@/lib/site";
+
+export const metadata: Metadata = {
+  title: "IPTV & Xtream Glossary",
+  description:
+    "Plain-language definitions of the terms you will meet while setting up IPTV and Xtream — EPG, M3U, Xtream API, XMLTV, and more.",
+  alternates: { canonical: `${site.url}/glossary` },
+  openGraph: {
+    title: "IPTV & Xtream Glossary",
+    description:
+      "Plain-language definitions of the terms you will meet while setting up IPTV and Xtream — EPG, M3U, Xtream API, XMLTV, and more.",
+    url: `${site.url}/glossary`,
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "IPTV & Xtream Glossary",
+    description:
+      "Plain-language definitions of the terms you will meet while setting up IPTV and Xtream — EPG, M3U, Xtream API, XMLTV, and more.",
+  },
+};
 
 const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 

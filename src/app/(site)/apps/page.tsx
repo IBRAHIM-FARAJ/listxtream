@@ -1,8 +1,30 @@
+import type { Metadata } from "next";
 import { Container } from "@/components/layout/container";
 import { HubHeader, HubSection } from "@/components/layout/hub";
 import { ArticleCard } from "@/components/cards/article-card";
 import { TopicCard } from "@/components/cards/topic-card";
 import { getArticlesByCategory } from "@/lib/articles";
+import { site } from "@/lib/site";
+
+export const metadata: Metadata = {
+  title: "IPTV Apps & Player Reviews",
+  description:
+    "Reviews and setup help for the IPTV players and apps worth using — player comparisons, configuration tips, and recommendations.",
+  alternates: { canonical: `${site.url}/apps` },
+  openGraph: {
+    title: "IPTV Apps & Player Reviews",
+    description:
+      "Reviews and setup help for the IPTV players and apps worth using — player comparisons, configuration tips, and recommendations.",
+    url: `${site.url}/apps`,
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "IPTV Apps & Player Reviews",
+    description:
+      "Reviews and setup help for the IPTV players and apps worth using — player comparisons, configuration tips, and recommendations.",
+  },
+};
 
 const subtopics = [
   {
