@@ -68,7 +68,7 @@ export default async function ArticlePage({
     .map((t) => getGlossaryTerm(t.toLowerCase()))
     .filter((g): g is NonNullable<typeof g> => Boolean(g));
 
-  const articleJsonLd = {
+    const articleJsonLd: any = {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: article.title,
@@ -83,6 +83,14 @@ export default async function ArticlePage({
     },
     mainEntityOfPage: `${site.url}/article/${article.slug}`,
   };
+
+  if (article.image) {
+    // Determine absolute URL if it is relative
+    const imageUrl = article.image.startsWith("http")
+      ? article.image
+      : `${site.url}${article.image.startsWith("/") ? "" : "/"}${article.image}`;
+    articleJsonLd.image = [imageUrl];
+  }
 
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",

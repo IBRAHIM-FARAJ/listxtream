@@ -3,7 +3,7 @@ import { Inter, JetBrains_Mono } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import { site } from "@/lib/site";
-
+import { CookieConsent } from "@/components/ui/cookie-consent";
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
@@ -79,18 +79,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${inter.variable} ${jetbrains.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-page text-ink">
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-QZ26RB371B"
-          strategy="afterInteractive"
-        />
-        <Script id="gtag-init" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-QZ26RB371B');
-          `}
-        </Script>
+        <CookieConsent />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}

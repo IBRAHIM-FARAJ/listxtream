@@ -24,8 +24,7 @@ export default function TermsPage() {
   return (
     <PageShell title="Terms of Use">
       <p>
-        By using ListXtream you agree to these terms. This is a draft of the
-        terms that will apply when the site is live.
+        By using ListXtream you agree to these terms.
       </p>
       <h2 className="mt-8 text-2xl font-semibold text-ink">Content use</h2>
       <p className="mt-4">
@@ -33,11 +32,12 @@ export default function TermsPage() {
         may read and share it with attribution, but you may not reproduce large
         portions of it commercially without permission.
       </p>
-      <h2 className="mt-8 text-2xl font-semibold text-ink">No professional advice</h2>
+      <h2 className="mt-8 text-2xl font-semibold text-ink">No professional advice & No Subscriptions</h2>
       <p className="mt-4">
-        Our guides are informational and are not professional, legal, or
-        technical advice for your specific situation. You are responsible for
-        how you apply the information.
+        Our guides are informational and educational. They are not professional, legal, or technical advice for your specific situation. You are responsible for how you apply the information.
+      </p>
+      <p className="mt-4">
+        <strong>ListXtream does not provide, host, or sell IPTV subscriptions, channels, or copyrighted streams.</strong> We are strictly an editorial and informational resource discussing the technology, players, and configuration methods.
       </p>
       <h2 className="mt-8 text-2xl font-semibold text-ink">Availability</h2>
       <p className="mt-4">

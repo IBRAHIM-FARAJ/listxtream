@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { TopicLanding } from "@/components/layout/topic-landing";
 import { site } from "@/lib/site";
+import { getArticle } from "@/lib/articles";
+import type { Article } from "@/lib/content-types";
 
 export const metadata: Metadata = {
   title: "IPTV on Apple TV",
@@ -23,13 +25,16 @@ export const metadata: Metadata = {
 };
 
 export default function AppleTvPage() {
+  const slugs = ["apple-tv-iptv-setup", "iptv-smarters-pro-setup-guide"];
+  const articles = slugs.map(getArticle).filter(Boolean) as Article[];
+
   return (
     <TopicLanding
       eyebrow="Devices"
       title="Apple TV"
       description="Players and configuration for Apple TV."
       href="/devices/apple-tv"
-      emptyHint="Apple TV guides are on the way."
+      articles={articles}
     />
   );
 }
