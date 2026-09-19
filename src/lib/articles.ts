@@ -2,6 +2,182 @@ import type { Article } from "./content-types";
 
 export const articles: Article[] = [
   {
+    slug: "understanding-epg-time-shift",
+    title: "Understanding EPG Time Shift and Offsets",
+    excerpt: "IPTV guide showing the wrong times? Learn how timezone, daylight-saving and offset settings cause EPG time shifts, and how to diagnose and fix them safely.",
+    category: "Guides",
+    categoryHref: "/guides/epg",
+    author: "ListXtream Editorial",
+    published: "Sep 2026",
+    updated: "Sep 2026",
+    publishedIso: "2026-09-19",
+    updatedIso: "2026-09-19",
+    readingTime: "4 min read",
+    badge: "EPG Guide",
+    topics: ["epg", "iptv"],
+    related: [
+      "what-is-epg",
+      "setup-epg-iptv",
+      "tivimate-complete-setup-guide",
+      "iptv-smarters-pro-setup-guide"
+    ],
+    blocks: [
+      {
+        type: "paragraph",
+        text: "If an IPTV guide shows programmes at the wrong time, the cause is usually a mismatch between the EPG timestamps, the device or app timezone, daylight-saving rules, or a manually applied offset. An EPG time shift changes how programme times are displayed; it does not delay or advance the actual live stream."
+      },
+      {
+        type: "paragraph",
+        text: "Start by checking the device's timezone and automatic time, not the guide itself, and avoid adding a manual offset before you have found the cause — a fixed offset can mask the real problem and break later. A one-hour error often suggests a timezone or daylight-saving interpretation, but that is not universal, and different channels or sources can behave differently on the same service."
+      },
+      {
+        type: "takeaway",
+        title: "Key Takeaway",
+        text: "Fix the underlying timezone or source issue first. Use a manual EPG offset only when the guide data is consistently shifted and the player provides a supported offset control."
+      },
+      {
+        type: "heading",
+        text: "What Is an EPG Time Shift?",
+        id: "what-is-an-epg-time-shift",
+        level: 2
+      },
+      {
+        type: "paragraph",
+        text: "An EPG time shift is an adjustment to the programme-guide times shown in your player — for example, when the guide appears an hour early or two hours late. It affects only the display of the guide, not the timing of the live stream. Players differ in whether they offer this control and what they call it — an EPG offset, a time shift, a guide offset, or a timezone adjustment — and some do not expose it at all."
+      },
+      {
+        type: "heading",
+        text: "Why EPG Times Can Be Wrong",
+        id: "why-epg-times-can-be-wrong",
+        level: 2
+      },
+      {
+        type: "paragraph",
+        text: "Guide times can drift for several reasons, sometimes more than one at once:"
+      },
+      {
+        type: "list",
+        items: [
+          "The device's timezone is set incorrectly.",
+          "Automatic date and time is switched off, or the clock is wrong.",
+          "A daylight-saving transition has just occurred.",
+          "The EPG source stores timestamps in a timezone the app interprets incorrectly.",
+          "The source guide data itself is wrong.",
+          "A manual offset was already applied and now does more harm than good.",
+          "The wrong EPG source is attached to the service.",
+          "A channel is mapped to the wrong guide entry."
+        ]
+      },
+      {
+        type: "paragraph",
+        text: "As a rough guide, not an absolute rule: a shift affecting every channel equally usually points to a timezone, device, app or source issue, while only some channels being wrong points to mapping or source-specific metadata."
+      },
+      {
+        type: "comparison",
+        caption: "Common EPG timing symptoms",
+        headers: ["Symptom", "Likely area to check", "First action"],
+        rows: [
+          [
+            "All channels exactly one hour early or late",
+            "Timezone or daylight-saving interpretation",
+            "Check device timezone and automatic time"
+          ],
+          [
+            "All channels wrong by the same amount",
+            "Device, app or EPG source time handling",
+            "Confirm timezone, then reload the EPG"
+          ],
+          [
+            "Only a few channels wrong",
+            "Channel-to-guide mapping or source metadata",
+            "Reload the EPG and check the mapping"
+          ],
+          [
+            "Times changed after a DST transition",
+            "A fixed manual offset that no longer fits",
+            "Remove the manual offset and re-check"
+          ],
+          [
+            "Guide correct but the programme does not match",
+            "Channel mapped to the wrong guide entry",
+            "Verify the channel's EPG mapping"
+          ],
+          [
+            "Problem appears only in one player or device",
+            "That device's clock or app settings",
+            "Compare with another compatible player"
+          ]
+        ]
+      },
+      {
+        type: "heading",
+        text: "Timezone, UTC and Daylight Saving Time",
+        id: "timezone-utc-and-daylight-saving-time",
+        level: 2
+      },
+      {
+        type: "paragraph",
+        text: "Programme-guide timestamps may carry timezone or UTC-offset information, and some systems normalise times internally before the player displays them according to your device and app settings. Not every feed represents time the same way, so it is not safe to assume all EPG data is in UTC, or that a label such as UTC+1 always means you should add an hour by hand. What you see is the player's interpretation of the source."
+      },
+      {
+        type: "paragraph",
+        text: "Daylight saving adds a further wrinkle. In regions that observe daylight saving, local clocks change seasonally, and a correctly configured device can update automatically; a fixed manual offset does not. An adjustment that looks right today can be an hour wrong after the next transition, so manual compensation should not be your first fix."
+      },
+      {
+        type: "heading",
+        text: "How to Diagnose an EPG Offset",
+        id: "how-to-diagnose-an-epg-offset",
+        level: 2
+      },
+      {
+        type: "paragraph",
+        text: "No single step is guaranteed to fix it, but this ordered check usually isolates the cause faster than guessing:"
+      },
+      {
+        type: "list",
+        items: [
+          "Confirm the device's current date, time and timezone are correct.",
+          "Enable automatic date/time and automatic timezone where appropriate.",
+          "Restart the player after changing timezone settings.",
+          "Refresh or reload the EPG data if the player supports it.",
+          "Compare a known live programme with the time shown in the guide.",
+          "Check whether the same shift affects all channels or only some.",
+          "Temporarily remove any manual EPG offset that is already set.",
+          "Where possible, compare the same service in another compatible player or device.",
+          "If the guide data itself is wrong, contact the service or provider."
+        ]
+      },
+      {
+        type: "heading",
+        text: "When to Use a Manual EPG Offset",
+        id: "when-to-use-a-manual-epg-offset",
+        level: 2
+      },
+      {
+        type: "paragraph",
+        text: "A manual offset is the right tool only when the device timezone is already correct, the guide is consistently shifted by the same amount, your player supports an offset control, and the provider cannot fix the feed quickly. Otherwise, fixing the underlying setting is the better route."
+      },
+      {
+        type: "paragraph",
+        text: "If you do apply one, be careful how you set it. Offset conventions differ between apps, so check how your player defines positive and negative before saving, rather than assuming a plus value moves the guide forward. Start with the smallest change needed, verify it against several channels, and remember that a daylight-saving change can later invalidate a fixed offset — note what you set and reset it if the source is corrected. Our TiviMate and IPTV Smarters Pro setup guides cover EPG setup and common guide issues."
+      },
+      {
+        type: "paragraph",
+        text: "To be clear about what an offset does and does not do: an EPG offset only changes the programme-guide timestamps. It does not delay a live stream, change the server's time, alter the video bitrate, fix buffering, or restore missing EPG data — those are separate issues. If you are still getting guide data working at all, our guides on what an EPG is and setting up EPG for IPTV cover the basics."
+      },
+      {
+        type: "heading",
+        text: "What to Do When Only Some Channels Are Wrong",
+        id: "what-to-do-when-only-some-channels-are-wrong",
+        level: 2
+      },
+      {
+        type: "paragraph",
+        text: "If only some channels show the wrong time, a global offset is the wrong fix — it would push the already-correct channels out of alignment. This usually points to something channel-specific: an incorrect channel-to-EPG-ID mapping, multiple EPG sources, source-specific timezone metadata, stale guide data, or a provider-side schedule error. Start by reloading the EPG, then verify the correct source and mapping wherever the app exposes them. Avoid a global shift when most channels are already correct, and contact the provider if the source data itself is wrong."
+      }
+    ]
+  },
+  {
     slug: "what-is-catch-up-tv",
     title: "What Is Catch-Up TV in IPTV?",
     excerpt: "Catch-Up TV replays programmes that aired earlier on live channels, for a limited time. Learn how it works, how it differs from VOD, and why it varies.",
