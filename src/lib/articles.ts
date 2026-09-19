@@ -2,6 +2,156 @@ import type { Article } from "./content-types";
 
 export const articles: Article[] = [
   {
+    slug: "what-is-catch-up-tv",
+    title: "What Is Catch-Up TV in IPTV?",
+    excerpt: "Catch-Up TV replays programmes that aired earlier on live channels, for a limited time. Learn how it works, how it differs from VOD, and why it varies.",
+    category: "Guides",
+    categoryHref: "/guides/beginners",
+    author: "ListXtream Editorial",
+    published: "Sep 2026",
+    updated: "Sep 2026",
+    publishedIso: "2026-09-19",
+    updatedIso: "2026-09-19",
+    readingTime: "4 min read",
+    badge: "Beginner Guide",
+    topics: ["iptv"],
+    related: [
+      "what-is-iptv",
+      "what-is-vod-in-iptv",
+      "what-is-epg",
+      "how-does-iptv-work"
+    ],
+    blocks: [
+      {
+        type: "paragraph",
+        text: "Catch-Up TV lets you watch programmes that aired earlier on live channels, when the service stores those programmes and makes them available for a limited period. It differs from video-on-demand (VOD) because catch-up usually starts with content that was first broadcast on a live channel, rather than a catalogue assembled for on-demand viewing."
+      },
+      {
+        type: "paragraph",
+        text: "Not every IPTV service supports catch-up, and not every channel is included even when it does. How long a programme stays available varies from one service to another, and whether you see the feature at all depends on the provider's rights, its infrastructure, and whether your player supports the way that provider delivers catch-up. If you are new to the basics, our explainer on what IPTV is gives the wider picture."
+      },
+      {
+        type: "takeaway",
+        title: "Key Takeaway",
+        text: "Catch-Up TV is a replay feature for previously broadcast live programmes. It depends on whether your service records or retains that channel's content and whether your player exposes the feature."
+      },
+      {
+        type: "heading",
+        text: "What Is Catch-Up TV?",
+        id: "what-is-catch-up-tv",
+        level: 2
+      },
+      {
+        type: "paragraph",
+        text: "Catch-Up TV is, at its simplest, a replay of programmes that have already aired on a live channel. It is usually tied to specific channels and individual programmes rather than the whole schedule, so you might be able to replay last night's news on one channel but not a film on another. The window in which a programme stays available varies by service — it is a time-limited replay feature, not necessarily a permanent library you can return to indefinitely. In everyday terms, it is the feature that lets you go back and watch something you missed when it first aired, provided the service kept it and the window has not yet closed."
+      },
+      {
+        type: "heading",
+        text: "How Catch-Up TV Works",
+        id: "how-catch-up-tv-works",
+        level: 2
+      },
+      {
+        type: "paragraph",
+        text: "Conceptually, the process is straightforward. A programme airs live on a channel, and where the service supports it, the provider retains or stores that broadcast for a period. Programme metadata — often the same electronic programme guide (EPG) data used for the live schedule — identifies when each programme aired, so the player can line up the right recording with the right time slot. Where the feature is supported, the player presents earlier programmes for that channel, and selecting one requests the stored version from the service. For the viewer, it often feels like a rewind of a channel's recent schedule: you move back to an earlier time slot and play what was on, rather than searching a separate library. The exact way this is delivered varies between providers and players, so the experience is not identical everywhere."
+      },
+      {
+        type: "heading",
+        text: "Catch-Up TV vs VOD",
+        id: "catch-up-tv-vs-vod",
+        level: 2
+      },
+      {
+        type: "paragraph",
+        text: "Catch-up and VOD are easy to confuse because both let you watch something whenever you choose, but they come from different places. The core distinction is the source: catch-up usually begins with content that first aired on live TV, while VOD is content intentionally offered as an on-demand catalogue. For more on the latter, see our guide on what VOD is in IPTV."
+      },
+      {
+        type: "comparison",
+        caption: "Catch-Up TV vs VOD at a glance",
+        headers: ["Feature", "Catch-Up TV", "VOD"],
+        rows: [
+          [
+            "Source",
+            "Usually programmes that first aired on live TV",
+            "Content offered directly as an on-demand catalogue"
+          ],
+          [
+            "Availability",
+            "Time-limited replay window",
+            "Typically available while it stays in the catalogue"
+          ],
+          [
+            "Organisation",
+            "Grouped by channel and broadcast time",
+            "Grouped into a browsable library of titles"
+          ],
+          [
+            "Typical use",
+            "Watch a programme you missed on live TV",
+            "Pick a film or series to start any time"
+          ],
+          [
+            "Retention",
+            "Kept for a limited period that varies by service",
+            "Depends on the catalogue and the provider"
+          ],
+          [
+            "Dependence on schedule",
+            "Tied to the live broadcast schedule",
+            "Not tied to a broadcast schedule"
+          ]
+        ]
+      },
+      {
+        type: "paragraph",
+        text: "In practice, some services blur this line — a provider might move popular catch-up programmes into a longer-lived on-demand section, or present both in a similar interface — so the labels are not always rigid. When you are unsure which one you are using, the clue is usually where the content came from — a past broadcast points to catch-up, while a purpose-built catalogue points to VOD."
+      },
+      {
+        type: "heading",
+        text: "How EPG Connects to Catch-Up",
+        id: "how-epg-connects-to-catch-up",
+        level: 2
+      },
+      {
+        type: "paragraph",
+        text: "In many IPTV players, catch-up navigation relies heavily on electronic programme guide data. The EPG provides the schedule metadata — programme names and their start and end times — and players often use those guide entries to expose replay, letting you scroll back through a channel's recent programmes and pick one. Catch-up can sometimes exist even when the EPG mapping is incomplete, but navigation usually suffers: without accurate guide data it is harder to find and select the right programme, so a blank or mismatched EPG affects discoverability even when the underlying recordings exist. Our guide on what an EPG is explains how that guide data works."
+      },
+      {
+        type: "heading",
+        text: "Why Catch-Up May Be Missing",
+        id: "why-catch-up-may-be-missing",
+        level: 2
+      },
+      {
+        type: "paragraph",
+        text: "If you cannot find catch-up, there are several possible reasons, and no single cause applies to everyone:"
+      },
+      {
+        type: "list",
+        items: [
+          "The provider does not offer catch-up at all.",
+          "The specific channel is not included, even if others are.",
+          "The retention window for that programme has expired.",
+          "Rights or licensing restrictions prevent replay of some content.",
+          "Your player or app does not support the method that provider uses for catch-up.",
+          "An EPG or channel-mapping issue is hiding programmes that do exist.",
+          "A temporary service-side problem is affecting availability.",
+          "Your account or package does not include the feature."
+        ]
+      },
+      {
+        type: "heading",
+        text: "How to Use Catch-Up Safely",
+        id: "how-to-use-catch-up-safely",
+        level: 2
+      },
+      {
+        type: "paragraph",
+        text: "As with the rest of IPTV, a few sensible habits keep things safe. Use only services you are authorised to access, and install player apps from official sources. Treat your playlist URL, login details and account credentials as private — do not share them, because they can identify or expose your account. It also helps to keep expectations realistic: catch-up availability comes from the service, not from the player. Changing to a different app cannot create catch-up if the service does not provide it — the app can only display what the provider makes available. For the bigger picture, see our overview of how IPTV works."
+      }
+    ]
+  },
+  {
     slug: "iptv-smarters-pro-setup-guide",
     title: "IPTV Smarters Pro: Complete Setup Guide",
     excerpt:
