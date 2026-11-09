@@ -8,8 +8,8 @@ export function ComparisonTable({
   rows: string[][];
 }) {
   const regionLabel = caption
-    ? `${caption} — tableau défilant horizontalement`
-    : "Tableau de comparaison défilant horizontalement";
+    ? `${caption} — horizontally scrollable table`
+    : "Comparison table — horizontally scrollable";
 
   return (
     <figure className="my-8 overflow-hidden rounded-[14px] border border-border">
@@ -19,13 +19,13 @@ export function ComparisonTable({
         </figcaption>
       )}
       <p className="border-b border-border bg-surface px-5 py-2 text-xs text-muted sm:hidden">
-        Faites défiler horizontalement pour voir toutes les colonnes.
+        Scroll horizontally to see all columns.
       </p>
       <div
         role="region"
         aria-label={regionLabel}
         tabIndex={0}
-        className="overflow-x-auto focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-[-2px]"
+        className="overflow-x-auto focus-visible:outline-2 focus-visible:outline-accent"
       >
         <table className="w-full border-collapse text-left text-sm">
           <thead>
